@@ -39,6 +39,7 @@ public class TokenRequestTest
   {
     TokenRequest request = new TokenRequest(CLIENT_ID, CLIENT_SECRET);
     String response = request.request();
+    assertNotNull(response);
     log.info("response is:\n"+response);
   }
   
@@ -48,8 +49,10 @@ public class TokenRequestTest
   {
     TokenRequest request = new TokenRequest(CLIENT_ID, CLIENT_SECRET);
     String response = request.request();
+    assertNotNull(response);
     log.info("response is:\n"+response);
     String accessToken = request.parseResponse(response);
+    assertNotNull(response);
     log.info("access_token is: "+accessToken);
   }
 }

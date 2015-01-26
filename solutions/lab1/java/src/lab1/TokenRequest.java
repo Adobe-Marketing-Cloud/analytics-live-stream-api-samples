@@ -33,6 +33,7 @@ public class TokenRequest {
   }
 
   public String request() throws IOException {
+    log.debug("initiating request for token");
     URL url = new URL(TOKEN_SERVER_URL);
     String postData = "grant_type=client_credentials";
     String basicAuth = this.clientId + ":" + this.clientSecret;
