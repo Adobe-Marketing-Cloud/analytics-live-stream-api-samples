@@ -1,5 +1,6 @@
 require 'net/http'
 require 'logger'
+require 'json'
 
 module Lab1
   class LiveStreamConnection
@@ -35,6 +36,7 @@ module Lab1
             chunk.each_char do |c|
 	      if c == "\n" then
 		puts buffer
+		calculate_lag(buffer)
 		puts "-------------------------------------"
 		buffer = ""
 	      else
@@ -43,6 +45,17 @@ module Lab1
 	    end
 	  end
 	end
+      end
+    end
+
+    def calculate_lag(record)
+      record_json = JSON.parse(record)
+      timestamp = record_json['receivedTimeGMT']
+      if timestamp.nil? then
+	looger.error "unable to find receivedTimeGMT field in record for lag calculation"
+      else
+	now = Time.new.to_i
+	logger.info "calculate_lag: record lag is #{now - timestamp.to_i} seconds"
       end
     end
 

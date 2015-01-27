@@ -27,5 +27,11 @@ module Lab1
       # chunks into buffers and emit records when we see newlines.
     end
 
+    def calculate_lag(record)
+      # you probably want a function like this to take a hit record in string format,
+      # parse it into a JSON hash, extract the event timestamp from the receivedTimeGMT
+      # field and calculate the difference between that timestamp and now.
+    end
+
   end
 end
