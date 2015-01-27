@@ -1,10 +1,5 @@
-require 'bundler/setup'
+require 'spec_helper'
 require 'net/http'
-
-require './token_request'
-
-CLIENT_ID = "356e592973-summitlab"
-CLIENT_SECRET = "2f0bfb2dba04bf30d714"
 
 describe Lab1::TokenRequest do
 

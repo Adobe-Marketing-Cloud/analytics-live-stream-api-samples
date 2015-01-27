@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 require 'net/http'
 
 describe Lab1::TokenRequest do
