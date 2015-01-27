@@ -25,13 +25,6 @@ module Lab1
       # need to read chunks and emit records separated by newlines.
       # note that records may span chunks...so we need to read the
       # chunks into buffers and emit records when we see newlines.
-      #
-      # I used Net::HTTP as the ruby HTTP client in the solution, but there are many others
-      # and you are free to use any client you wish.
-      #
-      # Note also that the use of rspec for unit test cases and test driven development
-      # has been set up in the spec directory. Feel free to use a different test framework
-      # for your test cases if you wish.
     end
 
   end
