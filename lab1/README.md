@@ -7,7 +7,7 @@ You can choose to code in Java or Ruby. A skeleton devleopment directory for eac
 
 Your code should do the following:
 
-* Open a HTTPS connection to the token API server at https://api.omniture.com/token
+* Open a HTTPS connection to the token API server at *https://api.omniture.com/token*
 * Perform a HTTP POST to this connection using HTTP basic authentication using the client ID and client secret listed below as the username and password, and passing a single post parameter named "grant_type" with the value "client_credentials".
 ```
 CLIENT_ID = "356e592973-summitlab"
