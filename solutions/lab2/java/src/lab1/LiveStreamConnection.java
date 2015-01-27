@@ -53,8 +53,21 @@ public class LiveStreamConnection {
     while ((line = reader.readLine()) != null) {
       if (line.length() > 0) {
 	System.out.println(line);
+	calculate_lag(line);
 	System.out.println("-------------------------------------");
       }
+    }
+  }
+
+  public void calculate_lag(String record) throws IOException {
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, Object> jsonModel = mapper.readValue(record, Map.class);
+    Integer timestamp = (Integer)jsonModel.get("receivedTimeGMT");
+    if (timestamp == null) {
+      log.error("unable to find receivedTimeGMT field in record for lag calculation");
+    } else {
+      long now = System.currentTimeMillis() / 1000; // now should be in seconds
+      System.out.println("calculate_lag: record lag is " + (now - timestamp.longValue()) + " seconds");
     }
   }
 }

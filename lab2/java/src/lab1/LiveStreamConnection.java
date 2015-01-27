@@ -41,4 +41,10 @@ public class LiveStreamConnection {
     // note that records may span chunks...so we need to read the
     // chunks into buffers and emit records when we see newlines.
   }
+
+  public void calculate_lag(String record) throws IOException {
+    // you probably want a function like this to take a hit record in string format,
+    // parse it into a JSON hash, extract the event timestamp from the receivedTimeGMT
+    // field and calculate the difference between that timestamp and now.
+  }
 }
