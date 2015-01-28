@@ -2,11 +2,11 @@ require 'spec_helper'
 
 require 'net/http'
 
-describe Lab1::TokenRequest do
+describe Lab2::TokenRequest do
 
   it "requests an access token from the token server via HTTPS" do
 
-    token_request = Lab1::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
+    token_request = Lab2::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
     response = token_request.request
 
     expect(response).to_not be_nil
@@ -16,7 +16,7 @@ describe Lab1::TokenRequest do
 
   it "requests an access token from the token server via HTTPS and parses the JSON response to get the access token" do
 
-    token_request = Lab1::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
+    token_request = Lab2::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
     response = token_request.request
 
     expect(response).to_not be_nil

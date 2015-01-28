@@ -2,7 +2,7 @@ require 'spec_helper'
 
 require 'net/http'
 
-describe Lab1::LiveStreamConnection do
+describe Lab3::LiveStreamConnection do
 
   it "requests an access token, connects to the live stream endpoint, and calculates the stream rate and transfer rate" do
 

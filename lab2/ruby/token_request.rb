@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'logger'
 
-module Lab1
+module Lab2
   class TokenRequest
 
     @@logger = Logger.new(STDOUT)

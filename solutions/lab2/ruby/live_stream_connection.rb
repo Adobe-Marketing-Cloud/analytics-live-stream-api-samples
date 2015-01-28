@@ -2,7 +2,7 @@ require 'net/http'
 require 'logger'
 require 'json'
 
-module Lab1
+module Lab2
   class LiveStreamConnection
 
     @@logger = Logger.new(STDOUT)
