@@ -1,4 +1,4 @@
-package lab1.test;
+package lab2.test;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
@@ -9,7 +9,7 @@ import org.junit.runner.JUnitCore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import lab1.TokenRequest;
+import lab2.TokenRequest;
 
 public class TokenRequestTest
 {

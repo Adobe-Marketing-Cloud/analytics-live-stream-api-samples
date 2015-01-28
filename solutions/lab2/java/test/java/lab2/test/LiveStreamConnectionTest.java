@@ -1,4 +1,4 @@
-package lab1.test;
+package lab2.test;
 
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
@@ -9,8 +9,8 @@ import org.junit.runner.JUnitCore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import lab1.TokenRequest;
-import lab1.LiveStreamConnection;
+import lab2.TokenRequest;
+import lab2.LiveStreamConnection;
 
 public class LiveStreamConnectionTest
 {
@@ -36,6 +36,15 @@ public class LiveStreamConnectionTest
   public void testLiveStreamConnection()
   throws Exception
   {
-    // # insert your test code here
+    TokenRequest request = new TokenRequest(CLIENT_ID, CLIENT_SECRET);
+    String response = request.request();
+    assertNotNull(response);
+    log.info("response is:\n"+response);
+    String accessToken = request.parseResponse(response);
+    assertNotNull(response);
+    log.info("access_token is: "+accessToken);
+
+    LiveStreamConnection connection = new LiveStreamConnection(LIVE_STREAM_ENDPOINT, accessToken);
+    connection.open();
   }
 }
