@@ -31,35 +31,44 @@ module Lab3
       start_time = Time.new.to_i
       records_received = 0
       bytes_received = 0
+      finished = false
 
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-	http.request req do |response|
-	  response.read_body do |chunk|
-	    # the streaming response is chunked transfer encoding, so we
-	    # need to read chunks and emit records separated by newlines.
-	    # note that records may span chunks...so we need to read the
-	    # chunks into buffers and emit records when we see newlines.
-	    chunk.each_char do |c|
-	      if c == "\n" then
-		records_received += 1
-		bytes_received += buffer.size
-		buffer = ""
-	      else
-		buffer << c
+      begin
+	Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+	  http.request req do |response|
+	    response.read_body do |chunk|
+	      # the streaming response is chunked transfer encoding, so we
+	      # need to read chunks and emit records separated by newlines.
+	      # note that records may span chunks...so we need to read the
+	      # chunks into buffers and emit records when we see newlines.
+	      chunk.each_char do |c|
+		if c == "\n" then
+		  records_received += 1
+		  bytes_received += buffer.size
+		  buffer = ""
+		else
+		  buffer << c
+		end
 	      end
-	    end
-	    # check the time after each chunk is processed, emit stats after 60 seconds
-	    now = Time.new.to_i
-	    elapsed_time = now-start_time
-	    if elapsed_time > STREAM_RATE_SAMPLE_PERIOD_SECONDS then
-	      stream_rate = records_received.to_f / elapsed_time.to_f
-	      transfer_rate = bytes_received.to_f / elapsed_time.to_f / 1024.0
-	      puts "stream rate calculated: #{stream_rate} records/second, read #{records_received} records in #{elapsed_time} seconds"
-	      puts "transfer rate calculated: #{transfer_rate} kb/second, read #{bytes_received} bytes in #{elapsed_time} seconds"
-	      puts "-------------------------------------"
+	      # check the time after each chunk is processed, emit stats after 60 seconds
+	      now = Time.new.to_i
+	      elapsed_time = now-start_time
+	      if elapsed_time > STREAM_RATE_SAMPLE_PERIOD_SECONDS then
+		stream_rate = records_received.to_f / elapsed_time.to_f
+		transfer_rate = bytes_received.to_f / elapsed_time.to_f / 1024.0
+		puts "stream rate calculated: #{stream_rate} records/second, read #{records_received} records in #{elapsed_time} seconds"
+		puts "transfer rate calculated: #{transfer_rate} kb/second, read #{bytes_received} bytes in #{elapsed_time} seconds"
+		puts "-------------------------------------"
+		http.finish
+		                finished = true
+				                break
+	      end
 	    end
 	  end
 	end
+      rescue StandardError => e
+	# suppresses errors raises by additional chunks arriving after termination of the connection
+	raise e if not finished
       end
     end
 
