@@ -46,9 +46,13 @@ module Lab4
 		    record_json = JSON.parse(buffer)
 		    visIdHigh = record_json['visIdHigh']
 		    visIdLow = record_json['visIdLow']
-		    visitorId = visIdHigh+visIdLow
+		    puts "visitorId: #{visIdHigh}:#{visIdLow}"
+		    visitorId = "#{visIdHigh}#{visIdLow}"
 		    visit = visits[visitorId]
-		    (visit = visits[visitorId] = Array.new) if visit.nil?
+		    if visit.nil? then
+		      visit = Array.new
+		      visits[visitorId] = visit
+		    end
 		    visit << record_json
 		  rescue StandardError => e
 		    puts "error: #{e}"
