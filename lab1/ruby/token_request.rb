@@ -2,6 +2,8 @@ require 'net/http'
 require 'json'
 require 'logger'
 
+require '../../credentials/ruby/credentials'
+
 module Lab1
   class TokenRequest
 
@@ -10,8 +12,6 @@ module Lab1
     def logger
       @@logger
     end
-
-    TOKEN_SERVER_URL = "https://api.omniture.com/token"
 
     def initialize(clientId, clientSecret)
 
@@ -22,6 +22,9 @@ module Lab1
     def request
 
       # insert your code here to perform a HTTP POST to the token server URL
+      #
+      # take a look at the provided Credentials class (with require statement above)
+      # to see the credentials and server URLs that are provided.
       #
       # you will want to pass the client ID and client secret as the username and password
       # of HTTP basic auth credentials for the request, and you will want to pass a parameter

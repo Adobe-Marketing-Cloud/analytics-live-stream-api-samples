@@ -16,6 +16,10 @@ module Lab2
 
     def open
       # insert your code here to connect to the live stream endpoint.
+      #
+      # take a look at the provided Credentials class 
+      # to see the credentials and server URLs that are provided.
+      #
       # you will need to pass the access_token in a HTTP authorization header
       # that looks like this:
       #
