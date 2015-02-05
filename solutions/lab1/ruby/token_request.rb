@@ -2,6 +2,8 @@ require 'net/http'
 require 'json'
 require 'logger'
 
+require "../../credentials/ruby/credentials"
+
 module Lab1
   class TokenRequest
 
@@ -11,8 +13,6 @@ module Lab1
       @@logger
     end
 
-    TOKEN_SERVER_URL = "https://api.omniture.com/token"
-
     def initialize(clientId, clientSecret)
       @clientId = clientId
       @clientSecret = clientSecret
@@ -21,7 +21,7 @@ module Lab1
     def request
       logger.debug "initiating request for token"
 
-      uri = URI(TOKEN_SERVER_URL)
+      uri = URI(Lab::Credentials.new.token_server_url)
 
       params = Hash.new
       params['grant_type'] = "client_credentials"

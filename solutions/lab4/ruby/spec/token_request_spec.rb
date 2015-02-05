@@ -6,7 +6,9 @@ describe Lab4::TokenRequest do
 
   it "requests an access token from the token server via HTTPS" do
 
-    token_request = Lab4::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
+    credentials = Lab::Credentials.new
+
+    token_request = Lab4::TokenRequest.new(credentials.client_id, credentials.client_secret)
     response = token_request.request
 
     expect(response).to_not be_nil
@@ -16,7 +18,9 @@ describe Lab4::TokenRequest do
 
   it "requests an access token from the token server via HTTPS and parses the JSON response to get the access token" do
 
-    token_request = Lab4::TokenRequest.new(CLIENT_ID, CLIENT_SECRET)
+    credentials = Lab::Credentials.new
+
+    token_request = Lab4::TokenRequest.new(credentials.client_id, credentials.client_secret)
     response = token_request.request
 
     expect(response).to_not be_nil
