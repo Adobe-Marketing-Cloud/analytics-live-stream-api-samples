@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'logger'
 
-require "../../credentials/ruby/credentials"
+require "../../../credentials/ruby/credentials"
 
 module Lab4
   class TokenRequest
