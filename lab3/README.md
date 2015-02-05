@@ -10,4 +10,6 @@ For this lab, you will write code to do the following:
 
 As before, you can choose to code in Java or Ruby. Feel free to use the skeletons or create your own directory structure - it's up to you. The solutions follow test driven development methodology and provide unit tests to test the goals for each coding exercise (hint: you should probably do this, too!).
 
+Take a look at the [![credentials](../credentials)](../credentials) directory to see valid credentials and server URLs in classes you can include in your projects for both Ruby and Java.
+
 Good luck! A working solution is available in [![solutions/lab3](../solutions/lab3)](../solutions/lab3)
