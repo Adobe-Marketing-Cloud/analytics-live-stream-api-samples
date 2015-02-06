@@ -9,14 +9,12 @@ import org.junit.runner.JUnitCore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lab.Credentials;
 import lab1.TokenRequest;
 
 public class TokenRequestTest
 {
   final Logger log = LoggerFactory.getLogger(TokenRequestTest.class);
-
-  protected static final String CLIENT_ID = "356e592973-summitlab";
-  protected static final String CLIENT_SECRET = "2f0bfb2dba04bf30d714";
 
   @BeforeClass
   public static void setUp()
@@ -34,7 +32,8 @@ public class TokenRequestTest
   public void testRequest()
   throws Exception
   {
-    TokenRequest request = new TokenRequest(CLIENT_ID, CLIENT_SECRET);
+    Credentials credentials = new Credentials();
+    TokenRequest request = new TokenRequest(credentials.getClientId(), credentials.getClientSecret());
     String response = request.request();
     assertNotNull(response);
     log.info("response is:\n"+response);
@@ -44,7 +43,8 @@ public class TokenRequestTest
   public void testParseResponse()
   throws Exception
   {
-    TokenRequest request = new TokenRequest(CLIENT_ID, CLIENT_SECRET);
+    Credentials credentials = new Credentials();
+    TokenRequest request = new TokenRequest(credentials.getClientId(), credentials.getClientSecret());
     String response = request.request();
     assertNotNull(response);
     log.info("response is:\n"+response);

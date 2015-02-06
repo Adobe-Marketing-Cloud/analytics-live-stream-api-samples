@@ -16,11 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+import lab.Credentials;
+
 public class TokenRequest {
 
   public static final Logger log = LoggerFactory.getLogger(TokenRequest.class);
-
-  protected static final String TOKEN_SERVER_URL = "https://api.omniture.com/token";
 
   protected String clientId;
   protected String clientSecret;
@@ -33,7 +33,8 @@ public class TokenRequest {
 
   public String request() throws IOException {
     log.debug("initiating request for token");
-    URL url = new URL(TOKEN_SERVER_URL);
+    Credentials credentials = new Credentials();
+    URL url = new URL(credentials.getTokenServerUrl());
     String postData = "grant_type=client_credentials";
     String basicAuth = this.clientId + ":" + this.clientSecret;
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -65,7 +66,7 @@ public class TokenRequest {
     if (connection != null) {
       connection.disconnect();
     }
-    throw new IOException("unexpected response from " + TOKEN_SERVER_URL + ":" + connection.getResponseCode() + ":" + connection.getResponseMessage());
+    throw new IOException("unexpected response from " + credentials.getTokenServerUrl() + ":" + connection.getResponseCode() + ":" + connection.getResponseMessage());
   }
 
   public String parseResponse(String response) throws IOException {
