@@ -17,6 +17,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+import lab.Credentials;
+
 public class LiveStreamConnection {
 
   public static final Logger log = LoggerFactory.getLogger(LiveStreamConnection.class);

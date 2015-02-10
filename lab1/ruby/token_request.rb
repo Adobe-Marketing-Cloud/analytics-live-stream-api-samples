@@ -24,7 +24,8 @@ module Lab1
       # insert your code here to perform a HTTP POST to the token server URL
       #
       # take a look at the provided Credentials class (with require statement above)
-      # to see the credentials and server URLs that are provided.
+      # to see the credentials and server URLs that are provided. you can find the class
+      # source file in the top level credentials directory.
       #
       # you will want to pass the client ID and client secret as the username and password
       # of HTTP basic auth credentials for the request, and you will want to pass a parameter

@@ -16,11 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+import lab.Credentials;
+
 public class TokenRequest {
 
   public static final Logger log = LoggerFactory.getLogger(TokenRequest.class);
-
-  protected static final String TOKEN_SERVER_URL = "https://api.omniture.com/token";
 
   protected String clientId;
   protected String clientSecret;
@@ -39,6 +39,10 @@ public class TokenRequest {
     // of HTTP basic auth credentials for the request, and you will want to pass a parameter
     // of "grant_type" = "client_credentials".
     //
+    // take a look at the provided Credentials class (with include statement above)
+    // to see the credentials and server URLs that are provided. you can find the class
+    // source file in the top level credentials directory.
+    //
     // I used java.net.* as the java HTTP client in the solution, but there are many others
     // and you are free to use any client you wish.
     //
@@ -46,6 +50,7 @@ public class TokenRequest {
     // has been set up in the test directory. Feel free to use a different test framework
     // for your test cases if you wish.
 
+    return null;
   }
 
   public String parseResponse(String response) throws IOException {
@@ -53,5 +58,6 @@ public class TokenRequest {
     // If you have time, you can implement this optional function to parse the JSON response
     // and extract the access token string.
 
+    return null;
   }
 }

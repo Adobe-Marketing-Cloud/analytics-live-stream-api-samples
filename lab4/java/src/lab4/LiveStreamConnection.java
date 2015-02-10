@@ -20,6 +20,8 @@ import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.ArrayList;
 
+import lab.Credentials;
+
 public class LiveStreamConnection {
 
   public static final Logger log = LoggerFactory.getLogger(LiveStreamConnection.class);
