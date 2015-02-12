@@ -8,6 +8,8 @@ Code for Summit 2015 Adobe Analytics Live Stream API Lab L724. Lab exercises are
 * Lab 3 : Open a connection to Live Stream, count records, and calculate the stream rate
 * Lab 4 : Open a connection to Live Stream and count unique visitor IDs
 
+Note that the credentials classes need to be populated with valid credentials prior to the class.
+
 ## License
 
 Licensed under the Apache Software License 2.0. See [![LICENSE](LICENSE)](LICENSE) file.
